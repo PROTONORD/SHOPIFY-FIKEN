@@ -10,7 +10,7 @@ Legg nødvendig konfig i `.env`:
 FIKEN_API_TOKEN=...            # Fiken API-token
 FIKEN_COMPANY_SLUG=...         # f.eks. fiken-demo-pittoresk-instrument-as
 ORDERS_BACKUP_PATH=/path/til/shopify/backup
-BANK_ACCOUNT_CODE=1920:10001   # innbetaling
+BANK_ACCOUNT_CODE=1920:12345   # innbetaling
 SALES_ACCOUNT_CODE=3000        # varelinjer
 SHIPPING_ACCOUNT_CODE=3000     # frakt (kan settes til egen konto)
 PAYMENT_FEE_ACCOUNT_CODE=7770  # valgfritt gebyr

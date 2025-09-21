@@ -17,7 +17,7 @@
     "vat",
     "e-commerce"
   ],
-  "author": "PROTONORD",
+  "author": "Your Organization",
   "license": "MIT",
   "dependencies": {
     "axios": "^1.6.0",

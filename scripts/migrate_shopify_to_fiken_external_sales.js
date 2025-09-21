@@ -60,7 +60,7 @@ class ShopifyFikenExternalSaleMigration {
     this.feeAccount = process.env.PAYMENT_FEE_ACCOUNT_CODE || '7770';
     this.feePercent = parseFloat(process.env.PAYMENT_FEE_PERCENT || '0');
     this.feeAmountFixed = parseInt(process.env.PAYMENT_FEE_AMOUNT_ORE || '0', 10) || 0;
-    this.ordersPath = process.env.ORDERS_BACKUP_PATH || '/home/kau005/produktutvikling/ordrer_backup/2025/09';
+    this.ordersPath = process.env.ORDERS_BACKUP_PATH || '/path/to/shopify/orders/backup';
 
     const apiToken = requireEnv('FIKEN_API_TOKEN');
     this.companySlug = requireEnv('FIKEN_COMPANY_SLUG');

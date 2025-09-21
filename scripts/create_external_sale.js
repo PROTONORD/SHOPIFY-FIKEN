@@ -36,10 +36,10 @@ async function main() {
   const productNet = toOre(process.env.EXTERNAL_SALE_NET || '8');
   const feeAmount = toOre(process.env.EXTERNAL_SALE_FEE || '2');
   const saleNumber = process.env.EXTERNAL_SALE_NUMBER || `SHOP-${Date.now()}`;
-  const customerId = process.env.EXTERNAL_SALE_CUSTOMER_ID || '7839799180';
+  const customerId = process.env.EXTERNAL_SALE_CUSTOMER_ID || '1234567890';
   const description = process.env.EXTERNAL_SALE_DESCRIPTION || 'Test produkt API';
   const saleDate = process.env.EXTERNAL_SALE_DATE || new Date().toISOString().split('T')[0];
-  const bankAccount = process.env.EXTERNAL_SALE_BANK_ACCOUNT || process.env.BANK_ACCOUNT_CODE || '1920:10001';
+  const bankAccount = process.env.EXTERNAL_SALE_BANK_ACCOUNT || process.env.BANK_ACCOUNT_CODE || '1920:12345';
   const feeAccount = process.env.EXTERNAL_SALE_FEE_ACCOUNT || process.env.PAYMENT_FEE_ACCOUNT_CODE || '7770';
   const incomeAccount = process.env.EXTERNAL_SALE_INCOME_ACCOUNT || process.env.SALES_ACCOUNT_CODE || '3010';
 
