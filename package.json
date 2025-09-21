@@ -8,7 +8,9 @@
     "migrate": "node scripts/migrate_shopify_to_fiken_journal.js",
     "migrate-sales": "node scripts/migrate_orders_to_fiken_sales.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon src/server.js"
+    "dev": "nodemon src/server.js",
+    "dummy-invoice": "node scripts/create_dummy_invoice.js",
+    "migrate-invoices": "node scripts/migrate_shopify_to_fiken_invoice.js"
   },
   "keywords": [
     "shopify",
