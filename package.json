@@ -1,0 +1,46 @@
+{
+  "name": "shopify-fiken-integration",
+  "version": "1.0.0",
+  "description": "Complete Shopify to Fiken accounting system integration",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "migrate": "node scripts/migrate_shopify_to_fiken_journal.js",
+    "migrate-sales": "node scripts/migrate_orders_to_fiken_sales.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon src/server.js"
+  },
+  "keywords": [
+    "shopify",
+    "fiken",
+    "accounting",
+    "webhook",
+    "integration",
+    "norway",
+    "vat",
+    "e-commerce"
+  ],
+  "author": "PROTONORD",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^1.6.0",
+    "express": "^4.18.0",
+    "pino": "^8.15.0",
+    "cors": "^2.8.5",
+    "helmet": "^7.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/PROTONORD/SHOPIFY-FIKEN.git"
+  },
+  "bugs": {
+    "url": "https://github.com/PROTONORD/SHOPIFY-FIKEN/issues"
+  },
+  "homepage": "https://github.com/PROTONORD/SHOPIFY-FIKEN#readme"
+}
