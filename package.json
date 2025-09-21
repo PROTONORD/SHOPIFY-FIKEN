@@ -1,16 +1,11 @@
 {
   "name": "shopify-fiken-integration",
   "version": "1.0.0",
-  "description": "Complete Shopify to Fiken accounting system integration",
-  "main": "src/server.js",
+  "description": "Import paid Shopify orders to Fiken as external sales",
+  "main": "src/fiken.js",
   "scripts": {
-    "start": "node src/server.js",
-    "migrate": "node scripts/migrate_shopify_to_fiken_journal.js",
-    "migrate-sales": "node scripts/migrate_orders_to_fiken_sales.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon src/server.js",
-    "dummy-invoice": "node scripts/create_dummy_invoice.js",
-    "migrate-invoices": "node scripts/migrate_shopify_to_fiken_invoice.js"
+    "external-sale": "node scripts/create_external_sale.js",
+    "migrate-external-sales": "node scripts/migrate_shopify_to_fiken_external_sales.js"
   },
   "keywords": [
     "shopify",
@@ -26,13 +21,10 @@
   "license": "MIT",
   "dependencies": {
     "axios": "^1.6.0",
-    "express": "^4.18.0",
-    "pino": "^8.15.0",
-    "cors": "^2.8.5",
-    "helmet": "^7.0.0"
-  },
-  "devDependencies": {
-    "nodemon": "^3.0.0"
+    "dotenv": "^17.2.2",
+    "form-data": "^4.0.4",
+    "pdfkit": "^0.17.2",
+    "pino": "^8.15.0"
   },
   "engines": {
     "node": ">=18.0.0"

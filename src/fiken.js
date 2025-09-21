@@ -1,4 +1,5 @@
 const axios = require('axios');
+const FormData = require('form-data');
 const pino = require('pino');
 
 const logger = pino({ level: process.env.LOG_LEVEL || 'info' });
@@ -270,6 +271,73 @@ class FikenAPI {
         responseData: error.response?.data,
         status: error.response?.status
       }, 'Failed to create sale in Fiken');
+      throw error;
+    }
+  }
+
+  /**
+   * Add payment to a sale (used for external_invoice cash settlements)
+   */
+  async addSalePayment(companySlug, saleId, paymentData) {
+    try {
+      const response = await this.client.post(`/companies/${companySlug}/sales/${saleId}/payments`, paymentData);
+      const locationHeader = response.headers.location;
+      const paymentId = locationHeader ? locationHeader.split('/').pop() : null;
+      const result = {
+        paymentId,
+        ...response.data
+      };
+
+      logger.info({ companySlug, saleId, paymentId }, 'Added payment to sale in Fiken');
+      return result;
+    } catch (error) {
+      logger.error({
+        error: error.message,
+        companySlug,
+        saleId,
+        requestData: paymentData,
+        responseData: error.response?.data,
+        status: error.response?.status
+      }, 'Failed to add payment to sale in Fiken');
+      throw error;
+    }
+  }
+
+  /**
+   * Attach a file (PDF/image) to a sale
+   */
+  async attachFileToSale(companySlug, saleId, buffer, options = {}) {
+    try {
+      const filename = options.filename || 'attachment.pdf';
+      const description = options.description || 'Attachment';
+      const contentType = options.contentType || 'application/pdf';
+
+      const form = new FormData();
+      form.append('file', buffer, { filename, contentType });
+      form.append('attachToSale', 'true');
+      form.append('description', description);
+      form.append('filename', filename);
+
+      const response = await this.client.post(
+        `/companies/${companySlug}/sales/${saleId}/attachments`,
+        form,
+        {
+          headers: {
+            ...form.getHeaders()
+          }
+        }
+      );
+
+      logger.info({ companySlug, saleId, filename }, 'Attached file to sale in Fiken');
+      return response.data;
+    } catch (error) {
+      logger.error({
+        error: error.message,
+        companySlug,
+        saleId,
+        responseData: error.response?.data,
+        status: error.response?.status
+      }, 'Failed to attach file to sale in Fiken');
       throw error;
     }
   }
